@@ -1,9 +1,6 @@
-﻿@{
-}
+﻿@model List<NewStar.Models.Inventory>
 
-@model List<NewStar.Models.Inventory>
-
-<h1>@ViewBag.Title</h1>
+<h1>Inventory</h1>
 
 @if (Model.Count == 0)
 {
@@ -15,6 +12,8 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Items Used</th>
+        <th>Items Remaining</th>
     </tr>
 
     @foreach (var item in Model)
@@ -22,8 +21,10 @@
         <tr>
             <td>@item.Name</td>
             <td>@item.Description</td>
+            <td>@item.Used</td>
+            <td>@item.Available</td>
         </tr>
     }
 </table>
 
-<p><a asp-controller="Cheese" asp-action="Add">Add Inventory</a></p>
+<p><a asp-controller="Inventory" asp-action="Add">Add Inventory</a></p>

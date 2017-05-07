@@ -1,0 +1,18 @@
+﻿@model NewStar.ViewModels.AddInventoryViewModel
+
+<h1>Add Inventory</h1>
+
+<form asp-controller="Inventory" asp-action="Add" method="post">
+    <div asp-validation-summary="All"></div>
+    
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+
+    <input type="submit" value="Add Item to be tracked" />
+</form>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewStar.Data;
+using NewStar.ViewModels;
 using NewStar.Models;
 
 
@@ -21,7 +22,7 @@ namespace NewStar.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Inventory()  //Maybe Change back to Index
+        public IActionResult Index()  //Maybe Change back to Index
         {
             IList<Inventory> Items = context.Items.ToList();
 
@@ -50,6 +51,17 @@ namespace NewStar.Controllers
             }
 
                 return Redirect("/Inventory");
+        }
+
+        public IActionResult Update()
+        {
+
+        }
+
+        [HttpPost]
+        public IActionResult Update()
+        {
+
         }
 
         public IActionResult Remove()

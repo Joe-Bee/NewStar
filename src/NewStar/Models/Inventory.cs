@@ -9,6 +9,8 @@ namespace NewStar.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int Used { get; set; }
+        public int Available { get; set; }
 
         public int ID { get; internal set; }
     }
