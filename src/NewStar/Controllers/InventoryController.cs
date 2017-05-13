@@ -91,25 +91,16 @@ namespace NewStar.Controllers
             return View();
         }
 
-        public IActionResult Remove()
+        public IActionResult Remove(int ID)
         {
-            ViewBag.title = "Remove Inventory";
-            ViewBag.items = context.Items.ToList();
-            return View();
-        }
-        
-        [HttpPost]
-        public IActionResult Remove(int[] itemIds)
-        {
-            foreach (int itemId in itemIds)
-            {
-                Inventory theItem = context.Items.Single(c => c.ID == itemId);
-                context.Items.Remove(theItem);
-            }
+            var inventory = (from a in context.Items
+                             where a.ID == ID
+                             select a).FirstOrDefault();
 
+            context.Items.Remove(inventory);
             context.SaveChanges();
-
             return Redirect("/Inventory");
         }
+        
     }
 }
