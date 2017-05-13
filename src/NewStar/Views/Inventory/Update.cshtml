@@ -1,10 +1,14 @@
-﻿@model NewStar.ViewModels.AddInventoryViewModel
+﻿@model NewStar.Models.Inventory
 
-<h1>Add Inventory</h1>
+<h1>Update Inventory</h1>
 
-<form asp-controller="Inventory" asp-action="Add" method="post">
+<p> </p>
+
+<form asp-controller="Inventory" asp-action="Update" method="post">
     <div asp-validation-summary="All"></div>
-    
+    <div class="form-group">
+        <label asp-for="ID">@Model.ID</label>
+    </div>
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" />
@@ -18,6 +22,7 @@
         <label asp-for="Available"></label>
         <input class="form-control" asp-for="Available" />
     </div>
-
-    <input type="submit" value="Add Item to be tracked" />
+    <font color="red">@ViewBag.msg</font>
+    <input type="submit" value="Update Inventory" />
 </form>
+

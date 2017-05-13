@@ -17,5 +17,9 @@ namespace NewStar.ViewModels
         [Required(ErrorMessage = "You must give a description")]
         [Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "You must provide the number of items")]
+        [Display(Name = "# of Items")]
+        public int Available { get; set; }
     }
 }

@@ -8,9 +8,10 @@ using NewStar.Data;
 namespace NewStar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170507192349_brokeinventoryadd")]
+    partial class brokeinventoryadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -174,7 +175,7 @@ namespace NewStar.Data.Migrations
 
             modelBuilder.Entity("NewStar.Models.Inventory", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("InventoryID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Available");
@@ -183,7 +184,7 @@ namespace NewStar.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ID");
+                    b.HasKey("InventoryID");
 
                     b.ToTable("Items");
                 });

@@ -29,6 +29,12 @@ namespace NewStar.Controllers
             return View(Items);
         }
 
+        [HttpPost]
+        public IActionResult Index(Dictionary<string,string> a)
+        {
+            return null;
+        }
+
         public IActionResult Add()
         {
             AddInventoryViewModel addInventoryViewModel = new AddInventoryViewModel();
@@ -44,6 +50,7 @@ namespace NewStar.Controllers
                 {
                     Name = addInventoryViewModel.Name,
                     Description = addInventoryViewModel.Description,
+                    Available = addInventoryViewModel.Available
                 };
 
                 context.Items.Add(newItem);
@@ -53,15 +60,35 @@ namespace NewStar.Controllers
                 return Redirect("/Inventory");
         }
 
-        public IActionResult Update()
+        public IActionResult Update(int ID)
         {
+            var inventory = (from a in context.Items
+                             where a.ID == ID
+                             select a).FirstOrDefault();
 
+            if (HttpContext.Request.Method == "POST")
+            {
+                {
+                    int a;
+                    int.TryParse(Request.Form["Available"], out a);
+                    if (a >= 0)
+                    {
+                        inventory.Name = Request.Form["Name"];
+                        inventory.Description = Request.Form["Description"];
+                        inventory.Available = a;
+                        context.Items.Update(inventory);
+                        context.SaveChanges();
+                        Response.Redirect("/Inventory/Index");
+                    }
+                };
+            }
+
+            return View(inventory);
         }
 
-        [HttpPost]
-        public IActionResult Update()
+        public IActionResult Shopping()
         {
-
+            return View();
         }
 
         public IActionResult Remove()
