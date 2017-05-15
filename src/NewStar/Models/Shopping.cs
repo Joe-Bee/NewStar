@@ -7,8 +7,8 @@ namespace NewStar.Models
 {
     public class Shopping
     {
-        public int ShoppingID { get; set; }
-        public string Name { get; set; }
+        public int ID { get; set; }
+        public string ShoppingList { get; set; }
 
         public int InventoryID { get; set; }
         public Inventory Inventory { get; set; }

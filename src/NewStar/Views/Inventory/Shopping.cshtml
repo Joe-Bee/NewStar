@@ -1,4 +1,4 @@
-﻿@model List<New
+﻿@model List<NewStar.Models.Shopping>
 
 <h1>Shopping List</h1>
 
@@ -14,13 +14,13 @@
         <th>Name</th>
     </tr>
 
-    @foreach (var  in Model)
+    @foreach (var list in Model)
     {
         <tr>
-            <td>@item.ID</td>
-            <td>@item.Name</td>
+            <td>@list.ID</td>
+            <td>@list.ShoppingList</td>
 
-            <td><p><a href="~/Shopping/AddItem/@item.ID">Add Item</a></p></td>
+            <td><p><a href="~/Shopping/AddItem/@list.ID">Add Item</a></p></td>
         </tr>
     }
 </table>

@@ -1,26 +1,12 @@
-﻿@model List<NewStar.Models.Shopping>
+﻿@model NewStar.ViewModels.AddListViewModel
 
-<h1>Inventory</h1>
+<form asp-controller="Inventory" asp-action="AddList" method="post">
+    <div asp-validation-summary="All"></div>
 
-@if (Model.Count == 0)
-{
-    <p>No Items to Track yet!</p>
-}
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
 
-<table class="table">
-
-    <tr>
-        <th>ID</th>
-        <th>Shopping Lists</th>
-    </tr>
-
-    @foreach (var list in Model)
-    {
-        <tr>
-            <td>@list.ShoppingID</td>
-            <td>@list.ShoppingList</td>
-
-            <td><p><a href="~/Inventory/Shopping/@list.ShoppingID">Add Item</a></p></td>
-        </tr>
-    }
-</table>
+    <input type="submit" value="Add Shopping List" />
+</form>

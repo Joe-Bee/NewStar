@@ -99,7 +99,7 @@ namespace NewStar.Controllers
             {
                 Shopping newList = new Shopping
                 {
-                    Name = addListViewModel.Name,
+                    ShoppingList = addListViewModel.Name,
                 };
 
                 context.ShoppingLists.Add(newList);
@@ -109,10 +109,10 @@ namespace NewStar.Controllers
             return Redirect("/Shopping");
         }
 
-        [HttpPost]
+        
         public IActionResult AddItem()
         {
-
+            return View();
         }
 
         public IActionResult Remove(int ID)
