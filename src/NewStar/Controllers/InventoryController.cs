@@ -29,12 +29,6 @@ namespace NewStar.Controllers
             return View(Items);
         }
 
-        [HttpPost]
-        public IActionResult Index(Dictionary<string,string> a)
-        {
-            return null;
-        }
-
         public IActionResult Add()
         {
             AddInventoryViewModel addInventoryViewModel = new AddInventoryViewModel();
@@ -57,7 +51,7 @@ namespace NewStar.Controllers
                 context.SaveChanges();
             }
 
-                return Redirect("/Inventory");
+            return Redirect("/Inventory");
         }
 
         public IActionResult Update(int ID)
@@ -88,7 +82,37 @@ namespace NewStar.Controllers
 
         public IActionResult Shopping()
         {
+            IList<Shopping> ShoppingLists = context.ShoppingLists.ToList();
+            return View(ShoppingLists);
+        }
+
+        public IActionResult AddList()
+        {
+            AddListViewModel addListViewModel = new AddListViewModel();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddList(AddListViewModel addListViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Shopping newList = new Shopping
+                {
+                    Name = addListViewModel.Name,
+                };
+
+                context.ShoppingLists.Add(newList);
+                context.SaveChanges();
+            }
+
+            return Redirect("/Shopping");
+        }
+
+        [HttpPost]
+        public IActionResult AddItem()
+        {
+
         }
 
         public IActionResult Remove(int ID)
@@ -101,6 +125,6 @@ namespace NewStar.Controllers
             context.SaveChanges();
             return Redirect("/Inventory");
         }
-        
+
     }
 }

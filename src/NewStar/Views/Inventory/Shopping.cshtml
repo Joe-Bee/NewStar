@@ -1,1 +1,28 @@
-﻿@model NewStar.ViewModels.ShoppingViewModel
+﻿@model List<New
+
+<h1>Shopping List</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No Items to Track yet!</p>
+}
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var  in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+
+            <td><p><a href="~/Shopping/AddItem/@item.ID">Add Item</a></p></td>
+        </tr>
+    }
+</table>
+
+<p><a asp-controller="Inventory" asp-action="AddList">Add Shopping List</a></p>

@@ -23,6 +23,7 @@ namespace NewStar.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<Inventory> Items{ get; set; }
+        public DbSet<Shopping> ShoppingLists { get; set; }
 
 
     }

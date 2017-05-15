@@ -1,0 +1,26 @@
+﻿@model List<NewStar.Models.Shopping>
+
+<h1>Inventory</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No Items to Track yet!</p>
+}
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Shopping Lists</th>
+    </tr>
+
+    @foreach (var list in Model)
+    {
+        <tr>
+            <td>@list.ShoppingID</td>
+            <td>@list.ShoppingList</td>
+
+            <td><p><a href="~/Inventory/Shopping/@list.ShoppingID">Add Item</a></p></td>
+        </tr>
+    }
+</table>
