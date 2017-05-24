@@ -149,7 +149,7 @@ namespace NewStar.Controllers
             return Redirect("/Inventory");
         }
 
-        public IActionResult Remove(int ID)
+        public IActionResult RemoveList(int ID)
         {
             var slist = (from a in context.ShoppingList
                              where a.ID == ID
