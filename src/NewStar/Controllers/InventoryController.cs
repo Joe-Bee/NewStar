@@ -151,13 +151,13 @@ namespace NewStar.Controllers
 
         public IActionResult RemoveList(int ID)
         {
-            var slist = (from a in context.ShoppingList
+            var slist = (from a in context.ShoppingLists
                              where a.ID == ID
                              select a).FirstOrDefault();
 
-            context.ShoppingList.Remove(slist);
+            context.ShoppingLists.Remove(slist);
             context.SaveChanges();
-            return Redirect("/Inventory");
+            return Redirect("/Inventory/Shopping");
         }
 
     }
