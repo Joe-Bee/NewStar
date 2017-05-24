@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace NewStar.Models
 {
-    public class Shopping
+    public class ShoppingList
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public int ListID { get; set; }
+
+        public string Item { get; set; }
+        public int Amount { get; set; }
     }
 }

@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model NewStar.ViewModels.AddListItemViewModel
+
+<h1>Add Shopping Item</h1>
+
+<form asp-controller="Inventory" asp-action="AddItem" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input class="form-control" asp-for="Amount" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Add Item" />
+    </div>
+</form>

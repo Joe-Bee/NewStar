@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using NewStar.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewStar.ViewModels
 {
     public class AddListItemViewModel
     {
-        public Shopping ShoppingList { get; set; }
-        public List<SelectListItem> Items { get; set; }
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
 
-        public int ShoppingListID { get; set; }
-        public int ID { get; set; }
-
+        [Required(ErrorMessage = "You must provide the number of items")]
+        [Display(Name = "Amount")]
+        public int Amount { get; set; }
     }
 }

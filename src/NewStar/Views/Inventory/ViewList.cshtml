@@ -1,0 +1,31 @@
+﻿@model List<NewStar.Models.ShoppingList>
+
+<h1>Inventory</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No Items to Track yet!</p>
+}
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Amount to Buy</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Item</td>
+            <td>@item.Amount</td>
+
+            <td><p><a href="~/Inventory/Update/@item.ID">Update</a></p></td>
+            <td><p><a href="~/Inventory/Remove/@item.ID">Remove</a></p></td>
+        </tr>
+    }
+</table>
+
+<p><a asp-controller="Inventory" asp-action="AddItem">Add Shopping Item</a></p>

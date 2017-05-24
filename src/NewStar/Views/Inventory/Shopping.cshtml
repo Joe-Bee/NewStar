@@ -18,9 +18,10 @@
     {
         <tr>
             <td>@list.ID</td>
-            <td>@list.ShoppingList</td>
+            <td>@list.Name</td>
 
-            <td><p><a href="~/Shopping/AddItem/@list.ID">Add Item</a></p></td>
+            <td><p><a href="ViewList/@list.ID">View Shopping List</a></p></td>
+            <td><p><a href="RemoveList/@list.ID">Remove</a></p></td>
         </tr>
     }
 </table>

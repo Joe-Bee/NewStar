@@ -24,7 +24,9 @@ namespace NewStar.Data
         }
         public DbSet<Inventory> Items{ get; set; }
         public DbSet<Shopping> ShoppingLists { get; set; }
+        public DbSet<ShoppingList> ShoppingList { get; set; }
 
 
     }
+
 }

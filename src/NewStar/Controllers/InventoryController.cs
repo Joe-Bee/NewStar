@@ -89,7 +89,7 @@ namespace NewStar.Controllers
         public IActionResult AddList()
         {
             AddListViewModel addListViewModel = new AddListViewModel();
-            return View();
+            return View(addListViewModel);
         }
 
         [HttpPost]
@@ -99,20 +99,43 @@ namespace NewStar.Controllers
             {
                 Shopping newList = new Shopping
                 {
-                    ShoppingList = addListViewModel.Name,
+                    Name = addListViewModel.Name,
                 };
 
                 context.ShoppingLists.Add(newList);
                 context.SaveChanges();
             }
 
-            return Redirect("/Shopping");
+            return Redirect("/Inventory/Shopping");
         }
 
-        
+        public IActionResult ViewList(int ID)
+        {
+            IList<ShoppingList> ListItems = context.ShoppingList.ToList();
+            return View(ListItems);
+        }
+
         public IActionResult AddItem()
         {
-            return View();
+            AddListItemViewModel addListItemViewModel = new AddListItemViewModel();
+            return View(addListItemViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(AddListItemViewModel addListItemViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                ShoppingList newListItem = new ShoppingList
+                {
+                    Item = addListItemViewModel.Name,
+                };
+
+                context.ShoppingList.Add(newListItem);
+                context.SaveChanges();
+            }
+
+            return Redirect("/Inventory/Shopping/");
         }
 
         public IActionResult Remove(int ID)
@@ -122,6 +145,17 @@ namespace NewStar.Controllers
                              select a).FirstOrDefault();
 
             context.Items.Remove(inventory);
+            context.SaveChanges();
+            return Redirect("/Inventory");
+        }
+
+        public IActionResult Remove(int ID)
+        {
+            var slist = (from a in context.ShoppingList
+                             where a.ID == ID
+                             select a).FirstOrDefault();
+
+            context.ShoppingList.Remove(slist);
             context.SaveChanges();
             return Redirect("/Inventory");
         }
